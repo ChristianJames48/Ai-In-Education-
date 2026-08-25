@@ -148,6 +148,12 @@
     .footer-grid { display:flex; justify-content:space-between; gap:25px; flex-wrap:wrap; }
     .footer-brand { color:#fff; font-family:"Space Grotesk"; font-weight:700; }
     .demo { font-size:.78rem; color:#98a3bd; margin-top:5px; }
+    .team-section { margin-top:35px; padding-top:30px; border-top:1px solid rgba(255,255,255,.12); }
+    .team-section h3 { color:#fff; font-size:1.15rem; margin-bottom:18px; letter-spacing:.08em; }
+    .team-list { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+    .team-list div { padding:14px 16px; border:1px solid rgba(255,255,255,.10); border-radius:14px; background:rgba(255,255,255,.04); }
+    .team-list strong { display:block; color:#fff; font-family:"Space Grotesk"; font-size:.9rem; }
+    .team-list span { display:block; color:#aeb8b1; font-size:.72rem; margin-top:3px; }
     .profile-panel {
       display:none; position:fixed; inset:0; z-index:2000; background:rgba(3,7,18,.72); backdrop-filter:blur(8px); place-items:center; padding:20px;
     }
@@ -158,6 +164,21 @@
     .top-btn { position:fixed; right:22px; bottom:22px; width:48px;height:48px;border-radius:15px;background:var(--primary);color:#fff;display:none;z-index:900; box-shadow:var(--shadow); }
     .fade { opacity:0; transform:translateY(18px); transition:.7s ease; }
     .fade.show { opacity:1; transform:none; }
+
+    /* Group 6 popup */
+    .group-btn { padding:10px 15px; border-radius:12px; background:linear-gradient(135deg,var(--primary),var(--accent)); color:#fff; font-weight:800; box-shadow:0 8px 20px rgba(54,67,61,.16); transition:.25s ease; }
+    .group-btn:hover { transform:translateY(-2px); }
+    .group-panel { display:none; position:fixed; inset:0; z-index:2500; background:rgba(3,7,18,.72); backdrop-filter:blur(8px); place-items:center; padding:20px; }
+    .group-box { width:min(560px,100%); max-height:90vh; overflow:auto; background:var(--surface); color:var(--text); border-radius:28px; padding:30px; border:1px solid var(--border); box-shadow:var(--shadow); animation:groupPop .25s ease; }
+    @keyframes groupPop { from { opacity:0; transform:translateY(15px) scale(.97); } to { opacity:1; transform:none; } }
+    .group-head { display:flex; justify-content:space-between; align-items:center; gap:15px; margin-bottom:22px; }
+    .group-head h2 { font-size:1.8rem; }
+    .member-list { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .member { padding:16px; border:1px solid var(--border); border-radius:16px; background:var(--surface-2); }
+    .member strong { display:block; font-family:"Space Grotesk"; margin-bottom:3px; }
+    .member span { color:var(--muted); font-size:.9rem; }
+    @media(max-width:600px){ .member-list { grid-template-columns:1fr; } .group-btn { padding:9px 11px; font-size:.8rem; } }
+
     @media(max-width:900px){
       .nav-links { display:none; position:absolute; left:4%; right:4%; top:70px; padding:12px; background:var(--surface); border:1px solid var(--border); border-radius:18px; flex-direction:column; box-shadow:var(--shadow); }
       .nav-links.open { display:flex; }
@@ -175,6 +196,7 @@
       .stats-grid { grid-template-columns:1fr 1fr; }
       .hero-art { min-height:330px; }
       .ai-screen { inset:55px 22px 25px; }
+      .team-list { grid-template-columns:1fr 1fr; }
     }
   </style>
 </head>
@@ -193,6 +215,7 @@
         <li><a href="#resources">Resources</a></li>
       </ul>
       <div class="nav-actions">
+        <button class="group-btn" id="groupBtn">GROUP 6</button>
         <button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode">☾</button>
         <button class="icon-btn" id="profileBtn" aria-label="Open student profile">➜]</button>
       </div>
@@ -449,6 +472,27 @@
     </section>
   </main>
 
+
+  <!-- Group 6 members popup -->
+  <div class="group-panel" id="groupPanel" role="dialog" aria-modal="true" aria-labelledby="groupTitle">
+    <div class="group-box">
+      <div class="group-head">
+        <h2 id="groupTitle">GROUP 6</h2>
+        <button class="icon-btn" id="closeGroup" aria-label="Close Group 6">✕</button>
+      </div>
+      <div class="member-list">
+        <div class="member"><strong>STEVE</strong><span>Leader / Reporter</span></div>
+        <div class="member"><strong>ANDRINO</strong><span>Coder / Publisher</span></div>
+        <div class="member"><strong>GABIANA</strong><span>Researcher</span></div>
+        <div class="member"><strong>JUDICO</strong><span>Researcher</span></div>
+        <div class="member"><strong>TABORADA</strong><span>Tester</span></div>
+        <div class="member"><strong>ORTIZ</strong><span>Researcher</span></div>
+        <div class="member"><strong>ARCEPE</strong><span>Tester</span></div>
+        <div class="member"><strong>GABRIEL</strong><span>Researcher</span></div>
+      </div>
+    </div>
+  </div>
+
   <!-- Front-end-only profile/login demonstration -->
   <div class="profile-panel" id="profilePanel">
     <div class="profile-box">
@@ -475,6 +519,20 @@
         <p class="demo">Created as a presentation-ready educational web project.</p>
       </div>
       <div>© 2026 AI in Education • Educational demonstration</div>
+    </div>
+
+    <div class="container team-section">
+      <h3>GROUP 6</h3>
+      <div class="team-list">
+        <div><strong>STEVE</strong><span>LEADER / REPORTER</span></div>
+        <div><strong>ANDRINO</strong><span>CODER / PUBLISHER</span></div>
+        <div><strong>GABIANA</strong><span>RESEARCHER</span></div>
+        <div><strong>JUDICO</strong><span>RESEARCHER</span></div>
+        <div><strong>TABORADA</strong><span>TESTER</span></div>
+        <div><strong>ORTIZ</strong><span>RESEARCHER</span></div>
+        <div><strong>ARCEPE</strong><span>TESTER</span></div>
+        <div><strong>GABRIEL</strong><span>RESEARCHER</span></div>
+      </div>
     </div>
   </footer>
 
@@ -564,6 +622,13 @@
     }
     document.getElementById('searchBtn').addEventListener('click', runSearch);
     document.getElementById('searchInput').addEventListener('keydown', e => { if (e.key === 'Enter') runSearch(); });
+
+
+    // Group 6 popup
+    const groupPanel = document.getElementById('groupPanel');
+    document.getElementById('groupBtn').addEventListener('click', () => groupPanel.style.display = 'grid');
+    document.getElementById('closeGroup').addEventListener('click', () => groupPanel.style.display = 'none');
+    groupPanel.addEventListener('click', e => { if (e.target === groupPanel) groupPanel.style.display = 'none'; });
 
     // Profile demonstration
     const profilePanel = document.getElementById('profilePanel');
